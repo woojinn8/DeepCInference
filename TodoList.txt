@@ -1,0 +1,15 @@
+Todo List
+1.동작구현
+ - MXNet
+ - OpenCV
+ 
+2.동작점검
+ - Pytorch의 output값
+ 
+3.CMakeList.txt
+ - Windows, Android용으로도 빌드할 수 있게 정리
+ 
+4. git에 올릴 수 있게
+ - 주석 추가
+ - convension 점검
+ - ReadMe.md 작성
