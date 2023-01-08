@@ -62,11 +62,12 @@ C++ Inference example for Deep Learning Framework
 
 |Framework|Linux|Android|Windows|
 |:---:|:---:|:---:|:---:|
-|Tensorflow|:white_check_mark:|-|:white_check_mark:|
+|Tensorflow|:heavy_check_mark:|-|:heavy_check_mark:|
 |TFLite|:heavy_check_mark:|:heavy_check_mark:|-|
 |Pytorch|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 |ONNX|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
-|NCNN|:heavy_check_mark:|:heavy_check_mark:|:white_check_mark:|
+|NCNN|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 |MXNet|:white_check_mark:|-|:white_check_mark:|
-|MNN|:heavy_check_mark:|:heavy_check_mark:|:white_check_mark:|
-|OpenCV|:heavy_check_mark:|-|:heavy_check_mark:|
+|MNN|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+|OpenCV|:white_check_mark:|-|:white_check_mark:|
+
