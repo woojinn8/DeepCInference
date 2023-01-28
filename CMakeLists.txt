@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 project(test_DeepCInference C CXX)
 
-OPTION (USE_ANDROID "Build for Android" OFF)
+OPTION (BUILD_ANDROID "Build for Android" OFF)
 
 # Basic Path Setting
 set(ATTRIBUTE PRIVATE)
 set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/0_3rdparty)
 
 if(USE_ANDROID)
-set(BUILD_PATH ${CMAKE_CURRENT_LIST_DIR}/build_android)
+set(BUILD_ANDROID ${CMAKE_CURRENT_LIST_DIR}/build_android)
 else()
 set(BUILD_PATH ${CMAKE_CURRENT_LIST_DIR}/build_linux)
 endif()
@@ -20,12 +20,24 @@ ${THIRD_PARTY}/tensorflow_tflite_2.10.0
 ${THIRD_PARTY}/tensorflow_tflite_2.10.0/flatbuffers/include
 ${THIRD_PARTY}/tensorflow_tflite_2.10.0/abseil-cpp
 )
-set(TF_LIB 
-${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite.so
-${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite_c.so
-)
-set(TFLITE_GPU_LIB ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite_gpu_delegate.so)
 
+if(BUILD_ANDROID)
+  set(TF_LIB 
+    ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite.so
+    ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite_c.so
+  )
+  set(TFLITE_GPU_LIB ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_linux/libtensorflowlite_gpu_delegate.so)
+elseif(UNIX)
+  set(TF_LIB 
+    ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_android/libtensorflowlite.so
+    ${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_android/libtensorflowlite_c.so
+  )
+elseif(WIN32)
+set(TF_LIB 
+${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_android/libtensorflowlite.lib
+${THIRD_PARTY}/tensorflow_tflite_2.10.0/lib_android/libtensorflowlite_c.lib
+)
+endif()
 
 # Pytorch Path Setting
 set(TORCH_INC ${THIRD_PARTY}/torch_1.13/include)
